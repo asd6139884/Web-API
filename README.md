@@ -6,13 +6,16 @@
 1. 速率限制配置：
   - 功能：限制每個 IP 在 m 分鐘內最多 k 個請求。
   - 說明：防止惡意攻擊（如 DDoS 攻擊）和濫用 API。使用中介軟體 express-rate-limit 來實現。
-2. 認證中介軟體：
+2. IP 過濾
+  - 功能：。
+  - 說明：。
+3. 認證中介軟體：
   - 功能：需要 API key，才能進行訪問。
   - 說明：確保只有授權用戶才能訪問你的 API。使用中介軟體來檢查請求頭中的 API key。
-3. 中介軟體(helmet)
+4. 中介軟體(helmet)
   - 功能：增強安全性，Helmet 包含多個小型中介軟體，每個中介軟體負責設置特定的安全標頭。
   - 說明：設置 HTTP 響應標頭來防止常見的網絡攻擊，如 XSS、點擊劫持和 MIME 類型嗅探。
-4. 中介軟體(CORS, Cross-Origin Resource Sharing)
+5. 中介軟體(CORS, Cross-Origin Resource Sharing)
   - 功能：允許跨域請求。
   - 說明：CORS 是一個 HTTP 標頭機制，允許伺服器指定哪些來源可以訪問伺服器上的資源，幫助管理和配置跨域請求。
 
