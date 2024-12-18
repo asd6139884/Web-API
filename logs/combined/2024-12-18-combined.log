@@ -1,0 +1,104 @@
+2024-12-18 11:50:02 [INFO]: Server is running on port 3000 
+2024-12-18 11:50:02 [INFO]: Database connection established {"threadId":70}
+2024-12-18 11:50:02 [INFO]: Database connection test successful 
+2024-12-18 11:50:09 [ERROR]: IP 白名單檢查失敗 {"error":"allowedRanges.some is not a function","stack":"TypeError: allowedRanges.some is not a function\n    at ipWhiteprocess (C:\\Users\\AlbertW\\Desktop\\智一\\專案開發\\Web-API\\src\\middlewares\\IPWhiteList.js:77:41)\n    at Layer.handle [as handle_request] (C:\\Users\\AlbertW\\Desktop\\智一\\專案開發\\Web-API\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at trim_prefix (C:\\Users\\AlbertW\\Desktop\\智一\\專案開發\\Web-API\\node_modules\\express\\lib\\router\\index.js:328:13)\n    at C:\\Users\\AlbertW\\Desktop\\智一\\專案開發\\Web-API\\node_modules\\express\\lib\\router\\index.js:286:9\n    at Function.process_params (C:\\Users\\AlbertW\\Desktop\\智一\\專案開發\\Web-API\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (C:\\Users\\AlbertW\\Desktop\\智一\\專案開發\\Web-API\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at C:\\Users\\AlbertW\\Desktop\\智一\\專案開發\\Web-API\\node_modules\\body-parser\\lib\\read.js:137:5\n    at AsyncResource.runInAsyncScope (node:async_hooks:206:9)\n    at invokeCallback (C:\\Users\\AlbertW\\Desktop\\智一\\專案開發\\Web-API\\node_modules\\raw-body\\index.js:238:16)\n    at done (C:\\Users\\AlbertW\\Desktop\\智一\\專案開發\\Web-API\\node_modules\\raw-body\\index.js:227:7)"}
+2024-12-18 11:50:38 [INFO]: Server is running on port 3000 
+2024-12-18 11:50:38 [INFO]: Database connection established {"threadId":71}
+2024-12-18 11:50:38 [INFO]: Database connection test successful 
+2024-12-18 11:57:27 [ERROR]: 無效的 IP 格式 {"ip":"::ffff:95.214.55.74"}
+2024-12-18 11:57:27 [ERROR]: 無效的 IP 格式 {"ip":"::ffff:93.174.93.12"}
+2024-12-18 11:57:32 [INFO]: Server is running on port 3000 
+2024-12-18 11:57:32 [INFO]: Database connection established {"threadId":72}
+2024-12-18 11:57:32 [INFO]: Database connection test successful 
+2024-12-18 11:57:35 [INFO]: 允許訪問的 IP {"ip":"::1","method":"POST","url":"/api/iot-data"}
+2024-12-18 11:57:35 [INFO]: 資料已成功更新 {"CarNo":"Car1","GPSTime":"2024-10-25 16:25:00"}
+2024-12-18 11:58:52 [INFO]: 資料已成功更新 {"CarNo":"Car1","GPSTime":"2024-10-25 16:25:00"}
+2024-12-18 11:58:56 [INFO]: 資料已成功更新 {"CarNo":"Car1","GPSTime":"2024-10-25 16:25:00"}
+2024-12-18 13:44:36 [INFO]: Server is running on port 3000 
+2024-12-18 13:44:36 [INFO]: Database connection established {"threadId":73}
+2024-12-18 13:44:36 [INFO]: Database connection test successful 
+2024-12-18 13:44:39 [INFO]: 允許訪問的 IP {"ip":"::1","method":"POST","url":"/api/iot-data"}
+2024-12-18 13:44:39 [INFO]: 資料已成功更新 {"CarNo":"Car1","GPSTime":"2024-10-25 16:25:00"}
+2024-12-18 13:44:40 [INFO]: 資料已成功更新 {"CarNo":"Car1","GPSTime":"2024-10-25 16:25:00"}
+2024-12-18 13:46:01 [ERROR]: 無效的 IP 格式 {"ip":"::ffff:80.251.153.93"}
+2024-12-18 13:46:12 [INFO]: IP 快取已重置 
+2024-12-18 13:46:18 [ERROR]: 無效的 IP 格式 {"ip":"::ffff:92.255.57.58"}
+2024-12-18 13:46:48 [INFO]: Server is running on port 3000 
+2024-12-18 13:46:48 [INFO]: Database connection established {"threadId":74}
+2024-12-18 13:46:48 [INFO]: Database connection test successful 
+2024-12-18 13:46:52 [INFO]: 允許訪問的 IP {"ip":"::1","method":"POST","url":"/api/iot-data"}
+2024-12-18 13:46:52 [INFO]: 資料已成功更新 {"CarNo":"Car1","GPSTime":"2024-10-25 16:25:00"}
+2024-12-18 13:46:54 [INFO]: 資料已成功更新 {"CarNo":"Car1","GPSTime":"2024-10-25 16:25:00"}
+2024-12-18 13:47:01 [ERROR]: 無效的 IP 格式 {"ip":"::ffff:65.49.20.69"}
+2024-12-18 13:47:04 [INFO]: 資料已成功儲存 {"CarNo":"Car1","GPSTime":"2024-10-25 16:25:00","id":0}
+2024-12-18 13:47:08 [INFO]: 資料已成功更新 {"CarNo":"Car1","GPSTime":"2024-10-25 16:25:00"}
+2024-12-18 13:47:46 [INFO]: Server is running on port 3000 
+2024-12-18 13:47:46 [INFO]: Database connection established {"threadId":75}
+2024-12-18 13:47:46 [INFO]: Database connection test successful 
+2024-12-18 13:47:49 [INFO]: 允許訪問的 IP {"ip":"::1","method":"POST","url":"/api/iot-data"}
+2024-12-18 13:47:49 [INFO]: 資料已成功儲存 {"CarNo":"Car1","GPSTime":"2024-10-25 16:25:00","id":0}
+2024-12-18 13:48:00 [INFO]: 資料已成功更新 {"CarNo":"Car1","GPSTime":"2024-10-25 16:25:00"}
+2024-12-18 13:54:26 [INFO]: Server is running on port 3000 
+2024-12-18 13:54:26 [INFO]: Database connection established {"threadId":76}
+2024-12-18 13:54:26 [INFO]: Database connection test successful 
+2024-12-18 13:54:34 [INFO]: 允許訪問的 IP {"ip":"::1","method":"GET","url":"/"}
+2024-12-18 13:55:54 [INFO]: Server is running on port 3000 
+2024-12-18 13:55:54 [INFO]: Database connection established {"threadId":77}
+2024-12-18 13:55:54 [INFO]: Database connection test successful 
+2024-12-18 13:56:06 [INFO]: 允許訪問的 IP {"ip":"::1","method":"GET","url":"/errpr"}
+2024-12-18 13:56:10 [ERROR]: Unhandled Error This is a test error {"stack":"Error: This is a test error\n    at C:\\Users\\AlbertW\\Desktop\\智一\\專案開發\\Web-API\\src\\app.js:50:19\n    at Layer.handle [as handle_request] (C:\\Users\\AlbertW\\Desktop\\智一\\專案開發\\Web-API\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (C:\\Users\\AlbertW\\Desktop\\智一\\專案開發\\Web-API\\node_modules\\express\\lib\\router\\route.js:149:13)\n    at Route.dispatch (C:\\Users\\AlbertW\\Desktop\\智一\\專案開發\\Web-API\\node_modules\\express\\lib\\router\\route.js:119:3)\n    at Layer.handle [as handle_request] (C:\\Users\\AlbertW\\Desktop\\智一\\專案開發\\Web-API\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at C:\\Users\\AlbertW\\Desktop\\智一\\專案開發\\Web-API\\node_modules\\express\\lib\\router\\index.js:284:15\n    at Function.process_params (C:\\Users\\AlbertW\\Desktop\\智一\\專案開發\\Web-API\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (C:\\Users\\AlbertW\\Desktop\\智一\\專案開發\\Web-API\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at C:\\Users\\AlbertW\\Desktop\\智一\\專案開發\\Web-API\\node_modules\\express-rate-limit\\dist\\index.cjs:752:7\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","path":"/error","method":"GET","body":{},"query":{},"params":{}}
+2024-12-18 13:56:10 [ERROR]: Unhandled error This is a test error {"stack":"Error: This is a test error\n    at C:\\Users\\AlbertW\\Desktop\\智一\\專案開發\\Web-API\\src\\app.js:50:19\n    at Layer.handle [as handle_request] (C:\\Users\\AlbertW\\Desktop\\智一\\專案開發\\Web-API\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (C:\\Users\\AlbertW\\Desktop\\智一\\專案開發\\Web-API\\node_modules\\express\\lib\\router\\route.js:149:13)\n    at Route.dispatch (C:\\Users\\AlbertW\\Desktop\\智一\\專案開發\\Web-API\\node_modules\\express\\lib\\router\\route.js:119:3)\n    at Layer.handle [as handle_request] (C:\\Users\\AlbertW\\Desktop\\智一\\專案開發\\Web-API\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at C:\\Users\\AlbertW\\Desktop\\智一\\專案開發\\Web-API\\node_modules\\express\\lib\\router\\index.js:284:15\n    at Function.process_params (C:\\Users\\AlbertW\\Desktop\\智一\\專案開發\\Web-API\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (C:\\Users\\AlbertW\\Desktop\\智一\\專案開發\\Web-API\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at C:\\Users\\AlbertW\\Desktop\\智一\\專案開發\\Web-API\\node_modules\\express-rate-limit\\dist\\index.cjs:752:7\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","path":"/error","method":"GET","body":{},"query":{},"params":{}}
+2024-12-18 13:58:03 [ERROR]: 無效的 IP 格式 {"ip":"::ffff:80.251.153.93"}
+2024-12-18 13:59:24 [INFO]: Server is running on port 3000 
+2024-12-18 13:59:24 [INFO]: Database connection established {"threadId":78}
+2024-12-18 13:59:24 [INFO]: Database connection test successful 
+2024-12-18 13:59:28 [INFO]: 允許訪問的 IP {"ip":"::1","method":"GET","url":"/error"}
+2024-12-18 13:59:28 [ERROR]: Unhandled Error This is a test error {"stack":"Error: This is a test error\n    at C:\\Users\\AlbertW\\Desktop\\智一\\專案開發\\Web-API\\src\\app.js:50:19\n    at Layer.handle [as handle_request] (C:\\Users\\AlbertW\\Desktop\\智一\\專案開發\\Web-API\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (C:\\Users\\AlbertW\\Desktop\\智一\\專案開發\\Web-API\\node_modules\\express\\lib\\router\\route.js:149:13)\n    at Route.dispatch (C:\\Users\\AlbertW\\Desktop\\智一\\專案開發\\Web-API\\node_modules\\express\\lib\\router\\route.js:119:3)\n    at Layer.handle [as handle_request] (C:\\Users\\AlbertW\\Desktop\\智一\\專案開發\\Web-API\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at C:\\Users\\AlbertW\\Desktop\\智一\\專案開發\\Web-API\\node_modules\\express\\lib\\router\\index.js:284:15\n    at Function.process_params (C:\\Users\\AlbertW\\Desktop\\智一\\專案開發\\Web-API\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (C:\\Users\\AlbertW\\Desktop\\智一\\專案開發\\Web-API\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at C:\\Users\\AlbertW\\Desktop\\智一\\專案開發\\Web-API\\node_modules\\express-rate-limit\\dist\\index.cjs:752:7\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","path":"/error","method":"GET","body":{},"query":{},"params":{}}
+2024-12-18 13:59:28 [ERROR]: Unhandled error This is a test error {"stack":"Error: This is a test error\n    at C:\\Users\\AlbertW\\Desktop\\智一\\專案開發\\Web-API\\src\\app.js:50:19\n    at Layer.handle [as handle_request] (C:\\Users\\AlbertW\\Desktop\\智一\\專案開發\\Web-API\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at next (C:\\Users\\AlbertW\\Desktop\\智一\\專案開發\\Web-API\\node_modules\\express\\lib\\router\\route.js:149:13)\n    at Route.dispatch (C:\\Users\\AlbertW\\Desktop\\智一\\專案開發\\Web-API\\node_modules\\express\\lib\\router\\route.js:119:3)\n    at Layer.handle [as handle_request] (C:\\Users\\AlbertW\\Desktop\\智一\\專案開發\\Web-API\\node_modules\\express\\lib\\router\\layer.js:95:5)\n    at C:\\Users\\AlbertW\\Desktop\\智一\\專案開發\\Web-API\\node_modules\\express\\lib\\router\\index.js:284:15\n    at Function.process_params (C:\\Users\\AlbertW\\Desktop\\智一\\專案開發\\Web-API\\node_modules\\express\\lib\\router\\index.js:346:12)\n    at next (C:\\Users\\AlbertW\\Desktop\\智一\\專案開發\\Web-API\\node_modules\\express\\lib\\router\\index.js:280:10)\n    at C:\\Users\\AlbertW\\Desktop\\智一\\專案開發\\Web-API\\node_modules\\express-rate-limit\\dist\\index.cjs:752:7\n    at process.processTicksAndRejections (node:internal/process/task_queues:95:5)","path":"/error","method":"GET","body":{},"query":{},"params":{}}
+2024-12-18 14:00:15 [INFO]: Server is running on port 3000 
+2024-12-18 14:00:15 [INFO]: Database connection established {"threadId":79}
+2024-12-18 14:00:15 [INFO]: Database connection test successful 
+2024-12-18 14:00:18 [INFO]: 允許訪問的 IP {"ip":"::1","method":"GET","url":"/error"}
+2024-12-18 14:13:09 [INFO]: Server is running on port 3000 
+2024-12-18 14:13:09 [INFO]: Database connection established {"threadId":80}
+2024-12-18 14:13:09 [INFO]: Database connection test successful 
+2024-12-18 14:14:25 [INFO]: 允許訪問的 IP {"ip":"::1","method":"POST","url":"/api/iot-data"}
+2024-12-18 14:14:25 [ERROR]: 無效的 IP 格式 {"ip":"::ffff:95.214.55.74"}
+2024-12-18 14:14:25 [INFO]: 資料已成功儲存 {"CarNo":"Car1","GPSTime":"2024-10-25 16:25:00","id":0}
+2024-12-18 14:14:26 [INFO]: Server is running on port 3000 
+2024-12-18 14:14:26 [INFO]: Database connection established {"threadId":81}
+2024-12-18 14:14:26 [INFO]: Database connection test successful 
+2024-12-18 14:14:34 [INFO]: 允許訪問的 IP {"ip":"::1","method":"POST","url":"/api/iot-data"}
+2024-12-18 14:14:34 [INFO]: 資料已成功更新 {"CarNo":"Car1","GPSTime":"2024-10-25 16:25:00"}
+2024-12-18 14:14:44 [INFO]: Server is running on port 3000 
+2024-12-18 14:14:44 [INFO]: Database connection established {"threadId":82}
+2024-12-18 14:14:44 [INFO]: Database connection test successful 
+2024-12-18 14:14:49 [INFO]: 允許訪問的 IP {"ip":"::1","method":"POST","url":"/api/iot-data"}
+2024-12-18 14:14:49 [INFO]: 資料已成功更新 {"CarNo":"Car1","GPSTime":"2024-10-25 16:25:00"}
+2024-12-18 14:15:04 [INFO]: 資料已成功更新 {"CarNo":"Car1","GPSTime":"2024-10-25 16:25:00"}
+2024-12-18 14:15:15 [INFO]: 資料已成功儲存 {"CarNo":"Car1","GPSTime":"2024-10-25 16:25:00","id":0}
+2024-12-18 14:15:38 [INFO]: Server is running on port 3000 
+2024-12-18 14:15:38 [INFO]: Database connection established {"threadId":83}
+2024-12-18 14:15:38 [INFO]: Database connection test successful 
+2024-12-18 14:15:41 [INFO]: 允許訪問的 IP {"ip":"::1","method":"POST","url":"/api/iot-data"}
+2024-12-18 14:15:41 [INFO]: 資料已成功更新 {"CarNo":"Car1","GPSTime":"2024-10-25 16:25:00"}
+2024-12-18 14:15:53 [INFO]: 資料已成功更新 {"CarNo":"Car1","GPSTime":"2024-10-25 16:25:00"}
+2024-12-18 14:16:19 [INFO]: Server is running on port 3000 
+2024-12-18 14:16:19 [INFO]: Database connection established {"threadId":84}
+2024-12-18 14:16:19 [INFO]: Database connection test successful 
+2024-12-18 14:25:04 [ERROR]: 無效的 IP 格式 {"ip":"::ffff:46.19.138.234"}
+2024-12-18 14:25:04 [ERROR]: 無效的 IP 格式 {"ip":"::ffff:95.214.53.205"}
+2024-12-18 14:25:04 [ERROR]: 無效的 IP 格式 {"ip":"::ffff:172.169.4.32"}
+2024-12-18 14:25:04 [ERROR]: 無效的 IP 格式 {"ip":"::ffff:141.98.11.155"}
+2024-12-18 14:25:04 [ERROR]: 無效的 IP 格式 {"ip":"::ffff:80.251.153.93"}
+2024-12-18 14:25:13 [INFO]: Server is running on port 3000 
+2024-12-18 14:25:15 [ERROR]: Database connection test failed getaddrinfo ENOTFOUND localhostaaa {"stack":"Error: getaddrinfo ENOTFOUND localhostaaa\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:120:26)"}
+2024-12-18 14:26:13 [INFO]: Server is running on port 3000 
+2024-12-18 14:26:15 [ERROR]: Database connection test failed getaddrinfo ENOTFOUND localhostaaa {"stack":"Error: getaddrinfo ENOTFOUND localhostaaa\n    at GetAddrInfoReqWrap.onlookupall [as oncomplete] (node:dns:120:26)"}
+2024-12-18 14:26:28 [INFO]: Server is running on port 3000 
+2024-12-18 14:26:28 [INFO]: Database connection established {"threadId":85}
+2024-12-18 14:26:28 [INFO]: Database connection test successful 
+2024-12-18 14:26:28 [INFO]: Database initialized successfully 
+2024-12-18 14:26:42 [INFO]: 允許訪問的 IP {"ip":"::1","method":"POST","url":"/api/iot-data"}
+2024-12-18 14:26:42 [INFO]: 資料已成功更新 {"CarNo":"Car1","GPSTime":"2024-10-25 16:25:00"}
+2024-12-18 14:26:45 [INFO]: 資料已成功更新 {"CarNo":"Car1","GPSTime":"2024-10-25 16:25:00"}

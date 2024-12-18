@@ -1,0 +1,15 @@
+{
+    "keep": {
+        "days": true,
+        "amount": 14
+    },
+    "auditLog": "C:\\Users\\AlbertW\\Desktop\\智一\\專案開發\\Web-API\\logs\\error\\.bed55638968a617a974d6455fc30820b649d6f26-audit.json",
+    "files": [
+        {
+            "date": 1734493802814,
+            "name": "C:\\Users\\AlbertW\\Desktop\\智一\\專案開發\\Web-API\\logs\\error\\2024-12-18-error.log",
+            "hash": "f44bab1601b00fe5ca1a7d9ea08c4360e917e2507800dad2b8c1fa43619f320e"
+        }
+    ],
+    "hashType": "sha256"
+}
