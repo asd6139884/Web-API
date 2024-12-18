@@ -74,7 +74,7 @@ GET /health
 ```
 回傳服務狀態和系統資訊。
 
-### IoT 資料接收
+### 單筆資料接收
 ```
 POST /api/iot-data
 Content-Type: application/json
