@@ -173,9 +173,19 @@ x-api-key: [your-api-key]
 │   └── combined/
 ├── src/
 │   ├── controllers/
+│   │   └── IoTDataHandler.js
 │   ├── middlewares/
+│   │   ├── authenticate.js
+│   │   ├── errorHandler.js
+│   │   ├── IPWhiteList.js
+│   │   ├── logger.js
+│   │   └── rateLimiter.js
 │   ├── routes/
+│   │   ├── health.js
+│   │   └── IoTDataRoutes.js
 │   ├── utils/
+│   │   └── db.js
+│   ├── monitor.js
 │   └── app.js
 └── server.js
 ```
