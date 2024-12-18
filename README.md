@@ -47,7 +47,7 @@ npm install
 
 3. 設定環境變數
 ```bash
-cp config/.env.example config/.env
+./config/.env
 ```
 編輯 `.env` 檔案，設定以下必要參數：
 - `PORT`: 服務執行埠
