@@ -56,7 +56,7 @@ npm install
 - `DB_PASSWORD`: 資料庫密碼
 - `DB_DATABASE`: 資料庫名稱
 - `API_KEY`: API 認證金鑰
-- `ALLOWED_IPS`: 允許的 IP 位址列表（以逗號分隔）
+- `ALLOWED_IPS`: 允許的 IP 位址列表（以逗號分隔），例如:ALLOWED_IPS=::1, XXX.XXX.XXX.XXX, XXX.XXX.XXX.0/24
 
 4. 啟動服務
 ```bash
