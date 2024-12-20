@@ -1,4 +1,5 @@
 # 資料接收服務
+![image](https://github.com/user-attachments/assets/cacb62d3-c456-4c1b-83b4-a9ae87907815)
 
 這是一個用於接收和處理資料的 Web API 服務。該服務提供了安全的資料接收端點，支援單筆和批次資料處理，並實現了完整的資料驗證、日誌記錄和錯誤處理機制。
 
@@ -170,27 +171,27 @@ x-api-key: [your-api-key]
 ```
 .
 ├── config/
-│   └── .env
+│   └── .env  //環境變數設定檔，用於儲存敏感資訊如資料庫連線字串、API 金鑰等。
 ├── logs/
-│   ├── error/
-│   └── combined/
+│   ├── error/  //儲存錯誤日誌。
+│   └── combined/  //儲存綜合日誌，包括錯誤和一般操作日誌。
 ├── src/
 │   ├── controllers/
-│   │   └── IoTDataHandler.js
+│   │   └── IoTDataHandler.js  //處理 IoT 資料的控制器，負責業務邏輯。
 │   ├── middlewares/
-│   │   ├── authenticate.js
-│   │   ├── errorHandler.js
-│   │   ├── IPWhiteList.js
-│   │   ├── logger.js
-│   │   └── rateLimiter.js
+│   │   ├── authenticate.js  //驗證中介軟體，負責使用者身份驗證。
+│   │   ├── errorHandler.js  //錯誤處理中介軟體，統一處理應用程式中的錯誤。
+│   │   ├── IPWhiteList.js  //IP 白名單中介軟體，限制只有特定 IP 可以訪問。
+│   │   ├── logger.js  //日誌中介軟體，記錄請求和錯誤。
+│   │   └── rateLimiter.js  //限流中介軟體，防止過多請求導致伺服器過載。
 │   ├── routes/
-│   │   ├── health.js
-│   │   └── IoTDataRoutes.js
+│   │   ├── health.js  //健康檢查路由，提供伺服器狀態檢查端點。
+│   │   └── IoTDataRoutes.js  //IoT 資料相關的路由，定義 API 端點。
 │   ├── utils/
-│   │   └── db.js
-│   ├── monitor.js
-│   └── app.js
-└── server.js
+│   │   └── db.js  //資料庫工具函數，處理資料庫連線和操作。
+│   ├── monitor.js  //系統監控模組，包含檢查系統狀態和資料庫連線的函數。
+│   └── app.js  //應用程式主檔案，設定 Express 應用程式和中介軟體。
+└── server.js  //伺服器啟動檔案，負責啟動和配置伺服器。
 ```
 
 ## 注意事項
