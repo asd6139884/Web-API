@@ -59,9 +59,11 @@ npm install
 - `ALLOWED_IPS`: 允許的 IP 位址列表（以逗號分隔），例如:ALLOWED_IPS=::1, XXX.XXX.XXX.XXX, XXX.XXX.XXX.0/24
 
 4. 啟動服務
+測試
 ```bash
 node server.js
 ```
+部署
 ```bash
 pm2 start server.js
 ```
