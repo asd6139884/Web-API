@@ -1,6 +1,7 @@
 # 資料接收服務
 這是一個用於接收和處理資料的 Web API 服務。該服務提供了安全的資料接收端點，支援單筆和批次資料處理，並實現了完整的資料驗證、日誌記錄和錯誤處理機制。
 ![image](https://github.com/user-attachments/assets/b47ccb62-8741-412c-ba50-f54f6d3d6c84)
+![Uploading image.png…]()
 
 
 
