@@ -171,52 +171,52 @@ x-api-key: [your-api-key]
 
 ```
 .
-├── config/
-│   └── .env  //環境變數設定檔，用於儲存敏感資訊如資料庫連線字串、API 金鑰等。
-├── logs/
-│   ├── error/  //儲存錯誤日誌。
-│   └── combined/  //儲存綜合日誌，包括錯誤和一般操作日誌。
-├── src/
-│   ├── controllers/
-│   │   └── IoTDataHandler.js  //處理 IoT 資料的控制器，負責業務邏輯。
-│   ├── middlewares/
-│   │   ├── authenticate.js  //驗證中介軟體，負責使用者身份驗證。
-│   │   ├── errorHandler.js  //錯誤處理中介軟體，統一處理應用程式中的錯誤。
-│   │   ├── IPWhiteList.js  //IP 白名單中介軟體，限制只有特定 IP 可以訪問。
-│   │   ├── logger.js  //日誌中介軟體，記錄請求和錯誤。
-│   │   └── rateLimiter.js  //限流中介軟體，防止過多請求導致伺服器過載。
-│   ├── routes/
-│   │   ├── health.js  //健康檢查路由，提供伺服器狀態檢查端點。
-│   │   └── IoTDataRoutes.js  //IoT 資料相關的路由，定義 API 端點。
-│   ├── utils/
-│   │   └── db.js  //資料庫工具函數，處理資料庫連線和操作。
-│   ├── monitor.js  //系統監控模組，包含檢查系統狀態和資料庫連線的函數。
-│   └── app.js  //應用程式主檔案，設定 Express 應用程式和中介軟體。
-└── server.js  //伺服器啟動檔案，負責啟動和配置伺服器。
+├── 📁config/
+│   └── .env
+├── 📁logs/
+│   ├── 📁error/
+│   └── 📁combined/
+├── 📁src/
+│   ├── 📁controllers/
+│   │   └── IoTDataHandler.js
+│   ├── 📁middlewares/
+│   │   ├── authenticate.js
+│   │   ├── errorHandler.js
+│   │   ├── IPWhiteList.js
+│   │   ├── logger.js
+│   │   └── rateLimiter.js
+│   ├── 📁routes/
+│   │   ├── health.js
+│   │   └── IoTDataRoutes.js
+│   ├── 📁utils/
+│   │   └── db.js
+│   ├── monitor.js
+│   └── app.js
+└── server.js
 ```
 
-- server.js: 伺服器啟動檔案，負責啟動和配置伺服器。
-- src/
+- **server.js:** 伺服器啟動檔案，負責啟動和配置伺服器。
+- 📁src
   - monitor.js: 系統監控模組，包含檢查系統狀態和資料庫連線的函數。
   - app.js: 應用程式主檔案，設定 Express 應用程式和中介軟體。
-  - controllers/
+  - 📁controllers/
     - IoTDataHandler.js: 處理 IoT 資料的控制器，負責業務邏輯。
-  - middlewares/
+  - 📁middlewares/
     - authenticate.js: 驗證中介軟體，負責使用者身份驗證。
     - errorHandler.js: 錯誤處理中介軟體，統一處理應用程式中的錯誤。
     - IPWhiteList.js: IP 白名單中介軟體，限制只有特定 IP 可以訪問。
     - logger.js: 日誌中介軟體，記錄請求和錯誤。
     - rateLimiter.js: 限流中介軟體，防止過多請求導致伺服器過載。
-  - routes/
+  - 📁routes/
     - health.js: 健康檢查路由，提供伺服器狀態檢查端點。
     - IoTDataRoutes.js: IoT 資料相關的路由，定義 API 端點。
-  - utils/
+  - 📁utils/
     - db.js: 資料庫工具函數，處理資料庫連線和操作。
-- config/
+- 📁config/
   - .env: 環境變數設定檔，用於儲存敏感資訊如資料庫連線字串、API 金鑰等。
-- logs/
-  - error/: 儲存錯誤日誌。
-  - combined/: 儲存綜合日誌，包括錯誤和一般操作日誌。
+- 📁logs/
+  - 📁error/: 儲存錯誤日誌。
+  - 📁combined/: 儲存綜合日誌，包括錯誤和一般操作日誌。
 
 ## 注意事項
 
