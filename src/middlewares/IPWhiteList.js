@@ -16,19 +16,19 @@ function isValidIP(ip) {
     const ipv4Regex = /^(\d{1,3}\.){3}\d{1,3}$/;
     // IPv6 驗證 (基本格式)
     const ipv6Regex = /^([0-9a-fA-F]{1,4}:){7}[0-9a-fA-F]{1,4}$/;
+    // IPv4 映射的 IPv6 驗證
+    const ipv4MappedIpv6Regex = /^::ffff:(\d{1,3}\.){3}\d{1,3}$/;
 
     // 檢查本地 IP 地址
     const localIPs = ['::1'];
     
     if (!ip) return false;
     if (localIPs.includes(ip)) return true; // 本地 IP 地址視為有效
-    return ipv4Regex.test(ip) || ipv6Regex.test(ip);
+    return ipv4Regex.test(ip) || ipv6Regex.test(ip) || ipv4MappedIpv6Regex.test(ip);
 }
 
-// 解析環境變數中的 IP 白名單
 const allowedRanges = (process.env.ALLOWED_IPS || '').split(',').map(range => range.trim()).filter(Boolean);
 // const allowedRanges = new Set((process.env.ALLOWED_IPS || '').split(',').filter(Boolean)); //當數據大的時候，將其轉換為 Set 以提高查詢效率
-
 
 // 在啟動時檢查白名單配置
 if (allowedRanges.length === 0) {
@@ -97,7 +97,7 @@ function ipWhiteprocess(req, res, next) {
         }
 
         // 記錄並拒絕未授權的訪問
-        logger.warn('拒絕訪問的 IP', {
+        logger.error('拒絕訪問的 IP', {
             ip: clientIP,
             method: req.method,
             url: req.originalUrl,

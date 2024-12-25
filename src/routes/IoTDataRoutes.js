@@ -9,6 +9,8 @@ const router = express.Router();
 // 單筆接收資料端點
 router.post('/', async (req, res) => {
     try {
+        logger.info('接收到的完整資料', { requestData: req.body });
+
         const result = await saveOrUpdateIoTData(req.body);
         res.status(200).json(result);
     } catch (err) {
@@ -20,8 +22,6 @@ router.post('/', async (req, res) => {
         res.status(err.status || 500).json({ message: err.message, error: err.error });
     }
 });
-
-
 
 // 批次接收資料端點
 router.post('/batch', async (req, res) => {

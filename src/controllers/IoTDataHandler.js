@@ -1,5 +1,9 @@
 const db = require('../utils/db');
 const logger = require('../logger/loggerInstance');
+require('dotenv').config(); // 確保環境變數已加載
+
+// 獲取資料表名稱
+const datatable = process.env.DB_TABLE;
 
 // IoT資料驗證函數
 const validateIoTData = (data) => {
@@ -52,10 +56,10 @@ const saveOrUpdateIoTData = async (data) => {
         throw { status: 400, message: validationErrors.join(', ') };
     }
 
-    const { CarNo, GPSTime, CarStatus, GPSAV, Position_lon, Position_lat, Speed, Angle, Mileage, TotalMileage, Sat } = data;
+    const { CarNo, GPSTime, CarStatus, GPSAV, Position_lon, Position_lat, Speed, Angle, Mileage, TotalMileage, Sat, TransDesc, TransValue } = data;
 
     // 檢查資料是否存在
-    const checkSql = 'SELECT * FROM gps_data WHERE CarNo = ? AND GPSTime = ?';
+    const checkSql = `SELECT * FROM ${datatable} WHERE CarNo = ? AND GPSTime = ?`;
     const [results] = await db.query(checkSql, [CarNo, GPSTime]);
 
     if (results.length > 0) {
@@ -65,7 +69,7 @@ const saveOrUpdateIoTData = async (data) => {
 
         const fieldsToUpdate = {
             CarStatus, GPSAV, Position_lon, Position_lat,
-            Speed, Angle, Mileage, TotalMileage, Sat
+            Speed, Angle, Mileage, TotalMileage, Sat, TransDesc, TransValue
         };
 
         for (const [key, value] of Object.entries(fieldsToUpdate)) {
@@ -84,19 +88,19 @@ const saveOrUpdateIoTData = async (data) => {
 
         // 動態生成的更新 SQL 語句
         const updateSql = `
-            UPDATE gps_data 
+            UPDATE ${datatable}
             SET ${updateFields.join(', ')}
             WHERE CarNo = ? AND GPSTime = ?
         `;
 
         await db.query(updateSql, updateValues);
-            logger.info('資料已成功更新', { CarNo, GPSTime });
+            logger.info('資料已成功更新');
             return { message: '資料已成功更新' };
     } else {
         // 資料不存在，進行新增
         const insertSql = `
-            INSERT INTO gps_data (CarNo, GPSTime, CarStatus, GPSAV, Position_lon, Position_lat, Speed, Angle, Mileage, TotalMileage, Sat)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            INSERT INTO ${datatable} (CarNo, GPSTime, CarStatus, GPSAV, Position_lon, Position_lat, Speed, Angle, Mileage, TotalMileage, Sat, TransDesc, TransValue)
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
         `;
 
         const insertValues = [
@@ -106,15 +110,17 @@ const saveOrUpdateIoTData = async (data) => {
             GPSAV || null,
             Position_lon || null, 
             Position_lat || null, 
-            Speed || null,
-            Angle || null, 
-            Mileage || null, 
-            TotalMileage || null, 
-            Sat || null
+            Speed !== undefined ? Speed : null,
+            Angle !== undefined ? Angle : null,
+            Mileage !== undefined ? Mileage : null,
+            TotalMileage !== undefined ? TotalMileage : null,
+            Sat !== undefined ? Sat : null,
+            TransDesc !== undefined ? TransDesc : '',
+            TransValue !== undefined ? TransValue : ''
         ];
 
         const [result] = await db.query(insertSql, insertValues);
-        logger.info('資料已成功儲存', { CarNo, GPSTime, id: result.insertId });
+        logger.info('資料已成功儲存');
         return { message: '資料已成功儲存', id: result.insertId };
     }
 };
@@ -143,15 +149,17 @@ const batchSaveIoTData = async (dataArray) => {
         data.GPSAV || null,
         data.Position_lon || null,
         data.Position_lat || null,
-        data.Speed || null,
-        data.Angle || null,
-        data.Mileage || null,
-        data.TotalMileage || null,
-        data.Sat || null
+        data.Speed !== undefined ? Speed : null,
+        data.Angle !== undefined ? Angle : null,
+        data.Mileage !== undefined ? Mileage : null,
+        data.TotalMileage !== undefined ? TotalMileage : null,
+        data.Sat !== undefined ? Sat : null,
+        data.TransDesc !== undefined ? data.TransDesc : '',
+        data.TransValue !== undefined ? data.TransValue : ''
     ]);
 
     const insertSql = `
-        INSERT INTO gps_data (
+        INSERT INTO ${datatable} (
             CarNo, GPSTime, CarStatus, GPSAV, Position_lon,
             Position_lat, Speed, Angle, Mileage, TotalMileage, Sat
         ) VALUES ?
@@ -164,7 +172,9 @@ const batchSaveIoTData = async (dataArray) => {
         Angle = VALUES(Angle),
         Mileage = VALUES(Mileage),
         TotalMileage = VALUES(TotalMileage),
-        Sat = VALUES(Sat)
+        Sat = VALUES(Sat),
+        TransDesc = VALUES(TransDesc),
+        TransValue = VALUES(TransValue)
     `;
 
     const [result] = await db.query(insertSql, [values]);
