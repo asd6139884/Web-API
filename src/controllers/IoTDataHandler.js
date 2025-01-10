@@ -5,6 +5,20 @@ require('dotenv').config(); // 確保環境變數已加載
 // 獲取資料表名稱
 const datatable = process.env.DB_TABLE;
 
+// 解析 TransDesc 和 TransValue
+const parseTransData = (transDesc, transValue) => {
+    const result = {};
+    if (transDesc && transValue) {
+        const descArray = transDesc.split(';');
+        const valueArray = transValue.split(';');
+        
+        descArray.forEach((field, index) => {
+            result[field] = valueArray[index] !== undefined ? valueArray[index] : null;
+        });
+    }
+    return result;
+};
+
 // IoT資料驗證函數
 const validateIoTData = (data) => {
     const errors = [];
@@ -48,6 +62,7 @@ const validateIoTData = (data) => {
     return errors;
 };
 
+// 單筆資料處理
 const saveOrUpdateIoTData = async (data) => {
     // 驗證資料
     const validationErrors = validateIoTData(data);
@@ -56,23 +71,19 @@ const saveOrUpdateIoTData = async (data) => {
         throw { status: 400, message: validationErrors.join(', ') };
     }
 
-    const { CarNo, GPSTime, CarStatus, GPSAV, Position_lon, Position_lat, Speed, Angle, Mileage, TotalMileage, Sat, TransDesc, TransValue } = data;
+    const { CarNo, GPSTime, TransDesc, TransValue, ...dataWithoutTrans } = data; // 使用解構賦值提取資料
+    const extraFields = parseTransData(TransDesc, TransValue); // 解析 TransDesc 和 TransValue
+    const combinedData = { ...dataWithoutTrans, ...extraFields }; // 合併資料
 
     // 檢查資料是否存在
     const checkSql = `SELECT * FROM ${datatable} WHERE CarNo = ? AND GPSTime = ?`;
     const [results] = await db.query(checkSql, [CarNo, GPSTime]);
 
-    if (results.length > 0) {
-        // 資料存在，動態生成更新語句
+    if (results.length > 0) { // 資料存在，進行更新
+        // 動態生成更新的欄位和值
         let updateFields = [];
         let updateValues = [];
-
-        const fieldsToUpdate = {
-            CarStatus, GPSAV, Position_lon, Position_lat,
-            Speed, Angle, Mileage, TotalMileage, Sat, TransDesc, TransValue
-        };
-
-        for (const [key, value] of Object.entries(fieldsToUpdate)) {
+        for (const [key, value] of Object.entries(combinedData)) {    
             if (value !== undefined) {
                 updateFields.push(`${key} = ?`);
                 updateValues.push(value);
@@ -81,7 +92,8 @@ const saveOrUpdateIoTData = async (data) => {
 
         // 加入條件參數
         updateValues.push(CarNo, GPSTime);
-
+        
+        // 檢查是否有需要更新的欄位
         if (updateFields.length === 0) {
             return { message: '沒有需要更新的欄位' };
         }
@@ -96,28 +108,22 @@ const saveOrUpdateIoTData = async (data) => {
         await db.query(updateSql, updateValues);
             logger.info('資料已成功更新');
             return { message: '資料已成功更新' };
-    } else {
-        // 資料不存在，進行新增
+
+    } else { // 資料不存在，進行新增
+        const allData = { CarNo, GPSTime, ...combinedData }; // 合併所有資料
+        const fields = Object.keys(allData); // 取得所有欄位名稱
+        const placeholders = fields.map(() => '?').join(', '); // 生成佔位符
+
+        // 動態生成插入 SQL 語句
         const insertSql = `
-            INSERT INTO ${datatable} (CarNo, GPSTime, CarStatus, GPSAV, Position_lon, Position_lat, Speed, Angle, Mileage, TotalMileage, Sat, TransDesc, TransValue)
-            VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)
+            INSERT INTO ${datatable} (${fields.join(', ')})
+            VALUES (${placeholders})
         `;
 
-        const insertValues = [
-            CarNo,
-            GPSTime, 
-            CarStatus || null, 
-            GPSAV || null,
-            Position_lon || null, 
-            Position_lat || null, 
-            Speed !== undefined ? Speed : null,
-            Angle !== undefined ? Angle : null,
-            Mileage !== undefined ? Mileage : null,
-            TotalMileage !== undefined ? TotalMileage : null,
-            Sat !== undefined ? Sat : null,
-            TransDesc !== undefined ? TransDesc : '',
-            TransValue !== undefined ? TransValue : ''
-        ];
+        // 取得所有欄位的值
+        const insertValues = fields.map(field => 
+            allData[field] !== undefined ? allData[field] : null
+        );
 
         const [result] = await db.query(insertSql, insertValues);
         logger.info('資料已成功儲存');
@@ -129,11 +135,15 @@ const saveOrUpdateIoTData = async (data) => {
 const batchSaveIoTData = async (dataArray) => {
     // 驗證所有資料
     const validationErrors = [];
-    dataArray.forEach((data, index) => {
+    const processedData = dataArray.map((data, index) => {
         const errors = validateIoTData(data);
         if (errors.length > 0) {
             validationErrors.push({ index, errors });
         }
+        const { CarNo, GPSTime, TransDesc, TransValue, ...dataWithoutTrans } = data;
+        const extraFields = parseTransData(TransDesc, TransValue);
+        const combinedData = { ...dataWithoutTrans, ...extraFields };
+        return { CarNo, GPSTime, ...combinedData };
     });
 
     if (validationErrors.length > 0) {
@@ -141,40 +151,22 @@ const batchSaveIoTData = async (dataArray) => {
         throw { status: 400, message: '資料驗證失敗', errors: validationErrors };
     }
 
-    // 準備批次插入的值
-    const values = dataArray.map(data => [
-        data.CarNo,
-        data.GPSTime,
-        data.CarStatus || null,
-        data.GPSAV || null,
-        data.Position_lon || null,
-        data.Position_lat || null,
-        data.Speed !== undefined ? Speed : null,
-        data.Angle !== undefined ? Angle : null,
-        data.Mileage !== undefined ? Mileage : null,
-        data.TotalMileage !== undefined ? TotalMileage : null,
-        data.Sat !== undefined ? Sat : null,
-        data.TransDesc !== undefined ? data.TransDesc : '',
-        data.TransValue !== undefined ? data.TransValue : ''
-    ]);
+    const fields = Object.keys(processedData[0]); // 用第一筆資料取得所有欄位名稱
 
+    // 準備批次插入的值
+    const values = processedData.map(data => 
+        fields.map(field => data[field] !== undefined ? data[field] : null) // 為每個欄位生成對應的值，如果值為 undefined，則設為 null。
+    );
+
+    // 動態生成批次插入 SQL 語句
     const insertSql = `
-        INSERT INTO ${datatable} (
-            CarNo, GPSTime, CarStatus, GPSAV, Position_lon,
-            Position_lat, Speed, Angle, Mileage, TotalMileage, Sat
-        ) VALUES ?
+        INSERT INTO ${datatable} (${fields.join(', ')})
+        VALUES ?
         ON DUPLICATE KEY UPDATE
-        CarStatus = VALUES(CarStatus),
-        GPSAV = VALUES(GPSAV),
-        Position_lon = VALUES(Position_lon),
-        Position_lat = VALUES(Position_lat),
-        Speed = VALUES(Speed),
-        Angle = VALUES(Angle),
-        Mileage = VALUES(Mileage),
-        TotalMileage = VALUES(TotalMileage),
-        Sat = VALUES(Sat),
-        TransDesc = VALUES(TransDesc),
-        TransValue = VALUES(TransValue)
+        ${fields
+            .filter(field => field !== 'CarNo' && field !== 'GPSTime')
+            .map(field => `${field} = VALUES(${field})`)
+            .join(',\n        ')}
     `;
 
     const [result] = await db.query(insertSql, [values]);
