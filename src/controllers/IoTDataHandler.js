@@ -8,12 +8,29 @@ const datatable = process.env.DB_TABLE;
 // 解析 TransDesc 和 TransValue
 const parseTransData = (transDesc, transValue) => {
     const result = {};
+
+    // 定義映射表
+    const fieldMapping = {
+        "電池溫度": "Temperature",
+        "偵測開關": "LiquidLevelStatus"
+    };
+
     if (transDesc && transValue) {
         const descArray = transDesc.split(';');
         const valueArray = transValue.split(';');
         
         descArray.forEach((field, index) => {
-            result[field] = valueArray[index] !== undefined ? valueArray[index] : null;
+            // 使用映射表進行轉換
+            const mappedField = fieldMapping[field] || field; // 若無對應則保持原值
+            let value = valueArray[index] !== undefined ? valueArray[index] : null;
+            // result[mappedField] = valueArray[index] !== undefined ? valueArray[index] : null;
+
+            // 若欄位為 "偵測開關"，則轉換 "開" 為 1，"關" 為 0
+            if (mappedField === "LiquidLevelStatus") {
+                value = value === "開" ? 1 : value === "關" ? 0 : null;
+            }
+
+            result[mappedField] = value;
         });
     }
     return result;

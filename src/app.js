@@ -4,7 +4,7 @@ const express = require('express');
 const cors = require('cors');
 const helmet = require('helmet');
 
-const rateLimiter = require('./middlewares/rateLimiter');
+// const rateLimiter = require('./middlewares/rateLimiter');
 const { ipWhiteprocess } = require('./middlewares/IPWhiteList'); // 引入 IP 白名單中介軟體
 const authenticate = require('./middlewares/authenticate');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
@@ -35,7 +35,7 @@ app.use(requestLogger); // 日誌中介軟體
 // ==========================
 // 業務邏輯路由
 // ==========================
-app.use(rateLimiter); // API 請求限流
+// app.use(rateLimiter); // API 請求限流
 app.use('/api/', authenticate); // API 身份驗證
 app.use('/api/iot-data', iotDataRoutes); // 將 IoT 資料路由放在 /api/ 路由下
 app.use('/health', healthRoutes); // 健康檢查路由
