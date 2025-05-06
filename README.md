@@ -1,9 +1,27 @@
-# 資料接收服務
-這是一個用於接收和處理資料的 Web API 服務。該服務提供了安全的資料接收端點，支援單筆和批次資料處理，並實現了完整的資料驗證、日誌記錄和錯誤處理機制。
+# IoT 資料處理 Web API 服務
+這是一個使用 Node.js 和 Express 框架開發的物聯網(IoT)資料處理 API 服務。該服務提供安全的資料接收端點，支援單筆和批次資料處理，並實現了完整的資料驗證、日誌記錄和錯誤處理機制。
 ![image](https://github.com/user-attachments/assets/40fa604d-0074-4ee5-a0c4-6c4e05d1114e)
 
-## 功能特點
+## 開發技術與框架
+### 主要框架
+- Express.js (Node.js 網頁應用框架)
+- Node.js (JavaScript 執行環境)
 
+### 資料庫
+- MySQL (透過 mysql2 套件連接)
+
+### 主要套件
+- helmet (增強安全性)
+- cors (跨來源資源共享)
+- winston (日誌管理)
+- winston-daily-rotate-file (日誌檔案輪換)
+- moment-timezone (時區處理)
+- node-cache (緩存機制)
+- ip-range-check (IP 範圍檢查)
+- express-rate-limit (API 請求限流)
+- dotenv (環境變數管理)
+
+## 功能特點
 ### 安全性
 - IP 白名單驗證
 - API 金鑰認證
@@ -159,13 +177,14 @@ x-api-key: [your-api-key]
 - 14 天自動輪替
 - 超過 20MB 自動分割
 - 自動壓縮歸檔
+- 記錄系統資源使用情況
 
 ## 效能考量
-
 - 資料庫連線池限制：10 個連線
 - 請求速率限制：每 15 分鐘 100 次
 - 記憶體使用監控
 - CPU 使用監控
+- IP 白名單快取機制：5 分鐘過期
 
 ## 專案結構
 
@@ -223,4 +242,5 @@ x-api-key: [your-api-key]
 2. API 金鑰應妥善保管，定期更換
 3. 監控系統資源使用情況
 4. 定期檢查和清理日誌檔案
-
+5. 實施資料備份策略
+6. 在生產環境中實施 HTTPS
